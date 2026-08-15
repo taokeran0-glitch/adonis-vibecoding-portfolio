@@ -1,0 +1,104 @@
+{
+  "assets": [
+    {
+      "path": "/assets/photos/photo-01.jpg",
+      "type": "photography",
+      "description": "卡帕多奇亚岩谷全景，枯枝作为近景框架，蓝天与米白地貌形成安静层次。"
+    },
+    {
+      "path": "/assets/photos/photo-02.jpg",
+      "type": "photography",
+      "description": "纵向雪山与高原村落，明亮云层、山脊和房屋构成递进空间。"
+    },
+    {
+      "path": "/assets/photos/photo-03.jpg",
+      "type": "photography",
+      "description": "横向银河与山脉夜景，深蓝到紫红的星空适合沉浸式全屏展示。"
+    },
+    {
+      "path": "/assets/photos/photo-04.jpg",
+      "type": "photography",
+      "description": "蓝调时刻的山城夜景，暖色建筑灯光与深蓝天空形成电影感反差。"
+    },
+    {
+      "path": "/assets/photos/photo-05.jpg",
+      "type": "photography",
+      "description": "极简建筑室内，水面、白墙与波斯语文字构成冷静的编辑式画面。"
+    },
+    {
+      "path": "/assets/photos/photo-06.jpg",
+      "type": "photography",
+      "description": "博斯普鲁斯海滨公园，长椅、渡轮和人物让城市风景带有生活叙事。"
+    },
+    {
+      "path": "/assets/illustrations/art-01.jpg",
+      "type": "illustration",
+      "description": "深蓝与酒红配色的二次元女性角色，心脏意象与碎裂月轮增强戏剧张力。"
+    },
+    {
+      "path": "/assets/illustrations/art-02.jpg",
+      "type": "illustration",
+      "description": "黑白哥特女性角色海报，几何遮挡、长发与颗粒纹理呈现实验排版感。"
+    },
+    {
+      "path": "/assets/illustrations/art-03.jpg",
+      "type": "illustration",
+      "description": "高留白黑白角色稿，兜帽、红色十字标记与对称构图形成宗教式视觉。"
+    },
+    {
+      "path": "/assets/illustrations/art-04.jpg",
+      "type": "illustration",
+      "description": "淡紫花冠女性角色与黑色香水瓶双画面，细线稿和柔和点色兼具精致感。"
+    },
+    {
+      "path": "/assets/illustrations/art-05.jpg",
+      "type": "illustration",
+      "description": "横向角色情绪板，头像、手写设定与夜空纹理展示从概念到视觉系统的过程。"
+    },
+    {
+      "path": "/assets/illustrations/art-06.jpg",
+      "type": "illustration",
+      "description": "黑白男性角色配橙色虎形与放射光环，东方元素与杂志拼贴语言结合。"
+    },
+    {
+      "path": "/assets/illustrations/art-07.jpg",
+      "type": "illustration",
+      "description": "西装眼镜男性角色，蓝色领带、红色线条和报纸碎片构成冷峻编辑海报。"
+    },
+    {
+      "path": "/assets/illustrations/art-08.jpg",
+      "type": "illustration",
+      "description": "执扇古风男性角色，以蓝黑线条和枝叶留白呈现清雅人物气质。"
+    },
+    {
+      "path": "/assets/evidence/xhs-profile.jpg",
+      "type": "evidence",
+      "description": "小红书绘画账号主页截图，用于展示账号身份、粉丝与累计互动数据。"
+    },
+    {
+      "path": "/assets/evidence/xhs-top-post.jpg",
+      "type": "evidence",
+      "description": "小红书最高表现笔记截图，展示单篇内容的十万级浏览与高互动结果。"
+    },
+    {
+      "path": "/assets/evidence/mihuashi-profile.jpg",
+      "type": "evidence",
+      "description": "米画师个人主页与作品陈列截图，用于证明专业画师平台入驻经历。"
+    },
+    {
+      "path": "/assets/posters/game-long-stay.png",
+      "type": "zine-poster",
+      "description": "长期游戏经历主题的极简 zine 海报，以纸张质感、克制蓝色和实验字体表达玩家记忆。"
+    },
+    {
+      "path": "/assets/posters/game-system-range.png",
+      "type": "zine-poster",
+      "description": "跨品类游戏与系统理解主题海报，以留白、红色点缀和杂志式文字呈现机制广度。"
+    },
+    {
+      "path": "/assets/posters/drawing-practice.png",
+      "type": "zine-poster",
+      "description": "绘画实践主题的极简纸张海报，作为插画章节的情绪封面与视觉过渡。"
+    }
+  ]
+}
