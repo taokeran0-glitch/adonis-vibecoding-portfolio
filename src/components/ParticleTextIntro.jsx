@@ -96,19 +96,27 @@ function makeParticleData(width, height, pixelRatio) {
   offscreen.height = height;
   const context = offscreen.getContext("2d", { willReadFrequently: true });
 
-  let fontSize = Math.min(218 * pixelRatio, width / 4.15);
+  const word = "ADONIS";
+  let fontSize = Math.min(218 * pixelRatio, width / 4.15, height * 0.34);
   const maxTextWidth = width - Math.min(120 * pixelRatio, width * 0.1);
+  const maxTextHeight = height * 0.34;
   context.clearRect(0, 0, width, height);
   context.fillStyle = "#ffffff";
   context.font = `900 ${fontSize}px Arial Black, Arial, sans-serif`;
-  const measuredWidth = context.measureText("ADONIS").width;
-  if (measuredWidth > maxTextWidth) {
-    fontSize *= maxTextWidth / measuredWidth;
+  let metrics = context.measureText(word);
+  const measuredHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent || fontSize;
+  const scale = Math.min(1, maxTextWidth / metrics.width, maxTextHeight / measuredHeight);
+  if (scale < 1) {
+    fontSize *= scale;
     context.font = `900 ${fontSize}px Arial Black, Arial, sans-serif`;
+    metrics = context.measureText(word);
   }
   context.textAlign = "center";
-  context.textBaseline = "middle";
-  context.fillText("ADONIS", width / 2, height / 2 - 10 * pixelRatio);
+  context.textBaseline = "alphabetic";
+  const textTop = metrics.actualBoundingBoxAscent || fontSize * 0.78;
+  const textBottom = metrics.actualBoundingBoxDescent || fontSize * 0.22;
+  const baseline = height / 2 + (textTop - textBottom) / 2 - 10 * pixelRatio;
+  context.fillText(word, width / 2, baseline);
 
   const image = context.getImageData(0, 0, width, height).data;
   const gap = (window.innerWidth < 720 ? 4.5 : 3.5) * pixelRatio;

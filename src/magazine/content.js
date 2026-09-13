@@ -60,7 +60,7 @@ export const skills = [
   ["营销与运营", "选题策划 · 内容增长 · KOL 合作 · 社区运营"],
   ["数据与分析", "SQL · Tableau · Excel · Python"],
   ["视觉表达", "Procreate · Photoshop · 剪映 · PPT"],
-  ["语言与文化", "阿拉伯语 · 英语 CET-4 · 跨文化沟通"],
+  ["语言与文化", "阿拉伯语 · 英语 CET-6 · 跨文化沟通"],
   ["AI 与构建", "Codex · Claude Code · Prompt Engineering · AI Workflow"],
 ];
 export const photos = [
