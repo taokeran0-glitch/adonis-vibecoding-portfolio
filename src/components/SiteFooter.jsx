@@ -1,10 +1,10 @@
 export function SiteFooter() {
   return (
     <footer className="site-footer page-section" id="about">
-      <div className="footer-poster">
+      <div className="footer-poster" data-reveal="poster">
         <img src="/assets/posters/game-long-stay.png" alt="Stay zine poster" loading="lazy" />
       </div>
-      <div className="footer-copy">
+      <div className="footer-copy" data-reveal="fade">
         <span className="dark-meta">PORTFOLIO / END NOTE / 2027</span>
         <h2>Let’s build a world<br />players want to stay in.</h2>
         <p>用玩家洞察、视觉内容与数据实验，帮助游戏在海外被看见、被理解、被留下。</p>

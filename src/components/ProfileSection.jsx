@@ -7,7 +7,7 @@ export function ProfileSection({ experience, capabilities }) {
 
   return (
     <section className="profile-section page-section" id="profile">
-      <div className="profile-statement">
+      <div className="profile-statement" data-reveal="fade">
         <SectionMeta index={1} label="PROFILE / POSITIONING" />
         <h2>A visual creator<br />who thinks like<br />an operator.</h2>
         <p>
@@ -18,7 +18,7 @@ export function ProfileSection({ experience, capabilities }) {
 
       <div className="experience-list" aria-label="经历路径">
         {experience.map((item, index) => (
-          <article className="experience-row" key={item.title}>
+          <article className="experience-row" key={item.title} data-reveal="row" style={{ "--reveal-order": index }}>
             <span className="experience-index">0{index + 1}</span>
             <div>
               <h3>{item.title}</h3>
@@ -28,7 +28,7 @@ export function ProfileSection({ experience, capabilities }) {
         ))}
       </div>
 
-      <div className="capability-system">
+      <div className="capability-system" data-reveal="fade">
         <div className="capability-heading">
           <SectionMeta index={2} label="CAPABILITY SYSTEM" />
           <h2>能力不是清单，<br />而是一条业务链路。</h2>
@@ -48,7 +48,7 @@ export function ProfileSection({ experience, capabilities }) {
             </button>
           ))}
         </div>
-        <div className="capability-detail" role="tabpanel">
+        <div className="capability-detail" role="tabpanel" key={current?.id}>
           <span>{current?.title}</span>
           <p>{current?.description}</p>
         </div>

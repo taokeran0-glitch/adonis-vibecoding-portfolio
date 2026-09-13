@@ -1,18 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export function SiteHeader({ navItems, activeSection }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const progressRef = useRef(null);
+  const activeIndex = useMemo(
+    () => Math.max(0, navItems.findIndex((item) => item.id === activeSection)),
+    [activeSection, navItems],
+  );
 
   useEffect(() => {
     const updateProgress = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+      const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      progressRef.current?.style.setProperty("transform", `scaleX(${progress})`);
     };
     updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
     return () => window.removeEventListener("scroll", updateProgress);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [menuOpen]);
 
   const goTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -31,6 +45,7 @@ export function SiteHeader({ navItems, activeSection }) {
             key={item.id}
             type="button"
             className={activeSection === item.id ? "nav-link is-active" : "nav-link"}
+            aria-current={activeSection === item.id ? "page" : undefined}
             onClick={() => goTo(item.id)}
           >
             {item.label}
@@ -38,8 +53,11 @@ export function SiteHeader({ navItems, activeSection }) {
         ))}
       </nav>
 
-      <div className="header-progress" aria-hidden="true">
-        <span style={{ transform: `scaleX(${progress})` }} />
+      <div className="header-status" aria-hidden="true">
+        <div className="header-progress">
+          <span ref={progressRef} />
+        </div>
+        <span className="header-count">{String(activeIndex + 1).padStart(2, "0")} / {String(navItems.length).padStart(2, "0")}</span>
       </div>
 
       <button
