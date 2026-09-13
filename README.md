@@ -49,6 +49,8 @@ npm run build
 
 可部署文件会生成在 `dist/`，可以直接交给 Vercel、Netlify 或其他静态托管平台。
 
+`main` 分支已连接 Vercel Git 集成：推送到 `main` 会自动更新生产站，其他分支与 Pull Request 会生成独立预览部署。
+
 ## 项目结构
 
 ```text
