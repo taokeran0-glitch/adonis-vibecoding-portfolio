@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-const INTRO_DURATION = 5600;
-const ASSEMBLE_DURATION = 2300;
+const INTRO_DURATION = 3600;
+const ASSEMBLE_DURATION = 1700;
 
 const vertexShaderSource = `
   attribute vec2 a_origin;
@@ -160,6 +160,7 @@ export function ParticleTextIntro({ onComplete }) {
   const canvasRef = useRef(null);
   const enterRef = useRef(null);
   const completedRef = useRef(false);
+  const leaveTimerRef = useRef(null);
   const [phase, setPhase] = useState("assembling");
   const [fallback, setFallback] = useState(false);
 
@@ -167,14 +168,14 @@ export function ParticleTextIntro({ onComplete }) {
     if (completedRef.current) return;
     completedRef.current = true;
     setPhase("leaving");
-    window.setTimeout(onComplete, 760);
+    leaveTimerRef.current = window.setTimeout(onComplete, 760);
   };
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.body.classList.add("is-locked");
     enterRef.current?.focus({ preventScroll: true });
-    const readyTimer = window.setTimeout(() => setPhase("ready"), reducedMotion ? 100 : ASSEMBLE_DURATION);
+    const readyTimer = window.setTimeout(() => setPhase(current => current === "leaving" ? current : "ready"), reducedMotion ? 100 : ASSEMBLE_DURATION);
     const finishTimer = window.setTimeout(finish, reducedMotion ? 1200 : INTRO_DURATION);
     const onKeyDown = (event) => {
       if (event.key === "Escape" || event.key === "Enter") finish();
@@ -184,6 +185,7 @@ export function ParticleTextIntro({ onComplete }) {
     return () => {
       window.clearTimeout(readyTimer);
       window.clearTimeout(finishTimer);
+      window.clearTimeout(leaveTimerRef.current);
       window.removeEventListener("keydown", onKeyDown);
       document.body.classList.remove("is-locked");
     };
@@ -303,27 +305,24 @@ export function ParticleTextIntro({ onComplete }) {
     >
       <div className="particle-intro__grain" aria-hidden="true" />
       <div className="particle-intro__meta particle-intro__meta--top">
-        <span>PORTFOLIO / INTERACTIVE ARCHIVE</span>
-        <span>00 / 07</span>
+        <span>ADONIS / PERSONAL EDITION</span>
+        <span>00 / 05</span>
       </div>
 
       <canvas ref={canvasRef} className="particle-intro__canvas" aria-hidden="true" />
       {fallback && <div className="particle-intro__fallback" aria-hidden="true">ADONIS</div>}
 
       <div className="particle-intro__caption">
-        <span>PLAYER CULTURE</span>
-        <i aria-hidden="true" />
-        <span>VISUAL CONTENT</span>
-        <i aria-hidden="true" />
-        <span>GROWTH</span>
+        <span>A CREATIVE MARKETER WITH AN IMAGINATIVE MIND</span>
+        <strong>热爱创造，富有想象力的营销人</strong>
       </div>
 
       <div className="particle-intro__meta particle-intro__meta--bottom">
         <span className="particle-intro__status">
-          {phase === "assembling" ? "ASSEMBLING SIGNALS" : "ARCHIVE READY"}
+          {phase === "assembling" ? "ASSEMBLING IDEAS" : "READY TO PRINT"}
         </span>
         <button ref={enterRef} type="button" className="particle-intro__enter" onClick={finish}>
-          {phase === "assembling" ? "SKIP INTRO" : "ENTER ARCHIVE"} <span aria-hidden="true">↘</span>
+          {phase === "assembling" ? "SKIP / 跳过开场" : "翻开这份特刊"} <span aria-hidden="true">↘</span>
         </button>
       </div>
       <span className="particle-intro__progress" aria-hidden="true" />
